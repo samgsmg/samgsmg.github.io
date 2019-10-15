@@ -1,14 +1,14 @@
-html{
-	backgroud-color: #00539F;
+html {
+    backgroud-color: #00539F;
+    font-size: 10px;
+    /* Google fonts 输出的 CSS */
+    font-family: 'Open Sans', sans-serif;
 }
 
-body{
-	wdith: 600px;
-	margin: 0 auto;
-	background-color: #FF9500;
-	padding: 0 20px 20px 20px;
-	border:  1px solid black;
-}
-p {
-    color: red;
+body {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #FF9500;
+    padding: 0 20px 20px 20px;
+    border: 1px solid black;
 }
