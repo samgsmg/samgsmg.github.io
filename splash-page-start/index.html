@@ -1,141 +1,150 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Mozilla splash page</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <style>
-      /* header and body setup */
+    /* header and body setup */
 
-      html {
+    html {
         font-family: 'Open Sans', sans-serif;
         background: url(pattern.png);
-      }
+    }
 
-      body {
+    body {
         width: 100%;
-        max-width: 1200px;
+        max-width: 1800px;
         margin: 0 auto;
         background-color: white;
         position: relative;
-      }
+    }
 
-      /* Header styling */
+    /* Header styling */
 
-      header {
+    header {
         height: 150px;
-      }
+    }
 
-      header img {
+    header img {
         width: 100px;
         position: absolute;
         right: 32.5px;
         top: 32.5px;
-      }
+    }
 
-      h1 {
+     img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+    h1 {
         font-size: 50px;
         line-height: 140px;
         margin: 0 0 0 32.5px;
-      }
+    }
 
-      /* main section and video styling */
+    /* main section and video styling */
 
-      main {
+    main {
         background: #ccc;
-      }
+    }
 
-      article {
+    article {
         padding: 20px;
-      }
+    }
 
-      h2 {
+    h2 {
         margin-top: 0;
-      }
+    }
 
-      p {
+    p {
         line-height: 2;
-      }
+    }
 
-      iframe {
+    iframe {
         float: left;
         margin: 0 20px 20px 0;
         max-width: 100%;
-      }
+    }
 
-      /* further info links */
+    /* further info links */
 
-      .further-info {
+    .further-info {
         clear: left;
         padding: 40px 0;
         background: #c13832;
-        box-shadow: inset 0 3px 2px rgba(0,0,0,0.5),
-                    inset 0 -3px 2px rgba(0,0,0,0.5);
-      }
+        box-shadow: inset 0 3px 2px rgba(0, 0, 0, 0.5),
+            inset 0 -3px 2px rgba(0, 0, 0, 0.5);
+    }
 
-      .further-info a {
+    .further-info a {
         width: 25%;
         display: block;
         float: left;
-      }
+    }
 
-      .further-info img {
+    .further-info img {
         max-width: 100%;
-      }
+    }
 
-      .clearfix {
+    .clearfix {
         clear: both;
-      }
+    }
 
-      /* Red panda image */
+    /* Red panda image */
 
-      .red-panda img {
+    .red-panda img {
         display: block;
         max-width: 100%;
-      }
+    }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <h1>Mozilla</h1>
-      <!-- insert <img> element, link to the small
+        <h1>Mozilla</h1>
+        <img src="firefoxlogo120.png" />
+        <!-- insert <img> element, link to the small
           version of the Firefox logo -->
-
     </header>
-
     <main>
-      <article>
-        <!-- insert iframe from youtube -->
-
-        <h2>Rocking the free web</h2>
-
-        <p>Mozilla are a global community of technologists, thinkers, and builders, working together to keep the Internet alive and accessible, so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across an open platform is essential to individual growth and our collective future.</p>
-
-        <p>Click on the images below to find more information about the cool stuff Mozilla does. <a href="https://www.flickr.com/photos/mathiasappel/21675551065/">Red panda picture</a> by Mathias Appel.</p>
-      </article>
-
-      <div class="further-info">
-        <!-- insert images with srcsets and sizes -->
-        <a href="https://www.mozilla.org/en-US/firefox/new/">
-          <img>
-        </a>
-        <a href="https://www.mozilla.org/">
-          <img>
-        </a>
-        <a href="https://addons.mozilla.org/">
-          <img>
-        </a>
-        <a href="https://developer.mozilla.org/en-US/">
-          <img>
-        </a>
-        <div class="clearfix"></div>
-      </div>
-
-      <div class="red-panda">
-        <!-- insert picture element -->
-      </div>
-
+        <article>
+            <iframe width="400" src="https://www.youtube.com/embed/ojcNcvb1olg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h2>Rocking the free web</h2>
+            <p>Mozilla are a global community of technologists, thinkers, and builders, working together to keep the Internet alive and accessible, so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across an open platform is essential to individual growth and our collective future.</p>
+            <p>Click on the images below to find more information about the cool stuff Mozilla does. <a href="https://www.flickr.com/photos/mathiasappel/21675551065/">Red panda picture</a> by Mathias Appel.</p>
+        </article>
+        <div class="further-info">
+            <!-- insert images with srcsets and sizes -->
+            <a href="https://www.mozilla.org/en-US/firefox/new/">
+                <img srcset="firefoxlogo120.png 200w , firefoxlogo400.png 400w" , sizes="(max-width: 480px) 120px,
+            400px" src="firefoxlogo400.png" alt="Elva dressed as a fairy">
+            </a>
+            <a href="https://www.mozilla.org/">
+                <img srcset="mozilla-dinosaur-head120.png 200w ,mozilla-dinosaur-head400.png 400w" , sizes="(max-width: 480px) 120px,
+            400px" src="mozilla-dinosaur-head400.png" alt="Elva dressed as a fairy">
+            </a>
+            <a href="https://addons.mozilla.org/">
+                <img srcset="firefox-addons120.jpg 200w , firefox-addons400.jpg 400w" , sizes="(max-width: 480px) 120px,
+            400px" src="firefox-addons400.jpg" alt="Elva dressed as a fairy">
+            </a>
+            <a href="https://developer.mozilla.org/en-US/">
+                <img src="mdn.svg">
+            </a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="red-panda">
+            <!-- insert picture element -->
+            <<picture>
+                <source media="(max-width: 599px)" srcset="red-panda600.jpg">
+                <source media="(min-width: 600px)" srcset="red-panda1200.jpg">
+                <img src="red-panda1200.jpg" alt="Chris standing up holding his daughter Elva">
+                </picture>
+        </div>
     </main>
-  </body>
+</body>
+
 </html>
