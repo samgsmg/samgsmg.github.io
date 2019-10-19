@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>custom widget</title>
+    <style type="text/css" media="screen">
+    .select {
+        position: relative;
+        display: inline-block;
+    }
+
+    .select.active,
+    .select:focus {
+        box-shadow: 0 0 3px 1px #227755;
+        outline: none;
+    }
+
+    .select .optList {
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+
+    .select .optList.hidden {
+        max-height: 0;
+        visibility: hidden;
+    }
+
+    /* ------------ */
+    /* Fancy Styles */
+    /* ------------ */
+
+    .select {
+        font-size: 0.625em;
+        /* 10px */
+        font-family: Verdana, Arial, sans-serif;
+
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+
+        padding: 0.1em 2.5em 0.2em 0.5em;
+        /* 1px 25px 2px 5px */
+        width: 10em;
+        /* 100px */
+
+        border: 0.2em solid #000;
+        /* 2px */
+        border-radius: 0.4em;
+        /* 4px */
+
+        box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, .45);
+        /* 0 1px 2px */
+
+        background: #F0F0F0;
+        background: -webkit-linear-gradient(90deg, #E3E3E3, #fcfcfc 50%, #f0f0f0);
+        background: linear-gradient(0deg, #E3E3E3, #fcfcfc 50%, #f0f0f0);
+    }
+
+    .select .value {
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        vertical-align: top;
+    }
+
+    .select:after {
+        content: "▼";
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: 2em;
+        /* 20px */
+        top: 0;
+        right: 0;
+
+        padding-top: .1em;
+
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+
+        text-align: center;
+
+        border-left: .2em solid #000;
+        border-radius: 0 .1em .1em 0;
+
+        background-color: #000;
+        color: #FFF;
+    }
+
+    .select .optList {
+        z-index: 2;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        background: #f0f0f0;
+        border: .2em solid #000;
+        border-top-width: .1em;
+        border-radius: 0 0 .4em .4em;
+
+        box-shadow: 0 .2em .4em rgba(0, 0, 0, .4);
+
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+
+        min-width: 100%;
+        max-height: 10em;
+        /* 100px */
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .select .option {
+        padding: .2em .3em;
+    }
+
+    .select .highlight {
+        background: #000;
+        color: #FFFFFF;
+    }
+
+    .widget select,
+    .no-widget .select {
+        /* 这个CSS选择器大体上说的是：
+     - 要么我们将body的class设置为"widget"，隐藏真实的<select>元素
+     - 或是我们没有改变body的class,这样body的class还是"no-widget",
+       因此class为"select"的元素需要被隐藏 */
+        position: absolute;
+        left: -5000em;
+        height: 0;
+        overflow: hidden;
+    }
+    </style>
+</head>
+
+<body>
+    <form>
+        <select name="myFruit">
+            <option>Cherry</option>
+            <option>Lemon</option>
+            <option>Banana</option>
+            <option>Strawberry</option>
+            <option>Apple</option>
+        </select>
+        <div class="select">
+            <span class="value">Cherry</span>
+            <ul class="optList hidden">
+                <li class="option">Cherry</li>
+                <li class="option">Lemon</li>
+                <li class="option">Banana</li>
+                <li class="option">Strawberry</li>
+                <li class="option">Apple</li>
+            </ul>
+        </div>
+    </form>
+</body>
+<script type="text/javascript" charset="utf-8" async defer>
+window.addEventListener("load", function() {
+    var selectList = document.querySelectorAll('.select');
+    selectList.forEach(function(select) {
+        var optionList = select.querySelectorAll('.option');
+        // 每当用户的鼠标悬停在一个选项上时，我们高亮这个指定的选项
+
+        selectedIndex = getIndex(select);
+        // // 使我们的自定义组件可以获得焦点
+        select.tabIndex = 0;
+
+        // 我们让原生组件无法获得焦点
+        select.previousElementSibling.tabIndex = -1;
+
+        // 确保默认选中的值正确显示
+        updateValue(select, selectedIndex);
+
+        optionList.forEach(function(option) {
+            option.addEventListener('mouseover', function() {
+                // 注意:'select'和'option'变量是我们函数调用范围内有效的闭包 。
+                highlightOption(select, option);
+            });
+        });
+        // 每当用户点击一个选项的时候，更新相应的值
+        optionList.forEach(function(option, index) {
+            option.addEventListener('click', function(event) {
+                updateValue(select, index);
+            });
+        });
+        // 每当用户在获得焦点的组件上用键盘操作时，更新相应的值
+        select.addEventListener('keyup', function(event) {
+            var length = optionList.length,
+                index = getIndex(select);
+
+            // 当用户点击向下箭头时，跳转到下一个选项
+            if (event.keyCode === 40 && index < length - 1) { index++; }
+
+            // 当用户点击向上箭头时，跳转到上一个选项
+            if (event.keyCode === 38 && index > 0) { index--; }
+
+            updateValue(select, index);
+        });
+        // 每当用户点击一个自定义的select元素时
+        select.addEventListener('click', function(event) {
+            // 注意:'select'变量是我们函数调用范围内有效的闭包。 
+
+            // 我们改变选项列表的可见性
+            toggleOptList(select);
+        });
+        // 如果组件获得了焦点
+        // 每当用户点击它或是用tab键访问这个组件时，组件获得焦点
+        select.addEventListener('focus', function(event) {
+            // 注意:'select'和'selectlist'变量是我们函数调用范围内有效的闭包 。
+
+            // 我们激活这个组件
+            activeSelect(select, selectList);
+        });
+        // 如果组件失去焦点
+        select.addEventListener('blur', function(event) {
+            // 注意:'select'变量是我们函数调用范围内有效的闭包。
+
+            // 我们关闭这个组件
+            deactivateSelect(select);
+        });
+
+    });
+});
+
+function updateValue(select, index) {
+    // 我们需要为了给定的自定义组件获取原生组件
+    // 在我们的例子中, 原生组件是自定义组件的‘同胞’
+    var nativeWidget = select.previousElementSibling;
+
+    // 我们也需要得到自定义组件的值占位符，
+    var value = select.querySelector('.value');
+
+    // 还有整个选项列表。
+    var optionList = select.querySelectorAll('.option');
+
+    // 我们将被选择的索引设定为我们的选择的索引
+    nativeWidget.selectedIndex = index;
+
+    // 更新相应的值占位符
+    value.innerHTML = optionList[index].innerHTML;
+
+    // 然后高亮我们自定义组件里对应的选项
+    highlightOption(select, optionList[index]);
+};
+// 这个函数返回原生组件里当前选定的索引
+// 它需要1个参数:
+// select : 跟原生组件有关的'select'类DOM节点
+function getIndex(select) {
+    // 我们需要为了给定的自定义组件访问原生组件
+    // 在我们的例子中, 原生组件是自定义组件的一个“同胞”
+    var nativeWidget = select.previousElementSibling;
+
+    return nativeWidget.selectedIndex;
+};
+
+function deactivateSelect(select) {
+
+    // 如果组件没有运行，不用进行任何操作
+    if (!select.classList.contains('active')) return;
+
+    // 我们需要获取自定义组件的选项列表
+    var optList = select.querySelector('.optList');
+
+    // 关闭选项列表
+    optList.classList.add('hidden');
+
+    // 然后停用组件本身
+    select.classList.remove('active');
+}
+
+// 每当用户想要激活（或停用）这个组件的时候，会调用这个函数
+// 它需要2个参数：
+// select : 要激活的带有'select'类的DOM节点
+// selectList : 包含所有带'select'类的DOM节点的列表
+function activeSelect(select, selectList) {
+
+    // 如果组件已经激活了，不进行任何操作
+    if (select.classList.contains('active')) return;
+
+    // 我们需要关闭所有自定义组件的活动状态
+    // 因为deactiveselect函数满足forEach回调函数的所有请求，
+    // 我们直接使用它，不使用中间匿名函数
+    selectList.forEach(deactivateSelect);
+
+    // 然后我们激活特定的组件
+    select.classList.add('active');
+}
+
+// 每当用户想要打开/关闭选项列表的时候，会调用这个函数
+// 它需要一个参数:
+// select : 要触发的列表的DOM节点
+function toggleOptList(select) {
+
+    // 该列表不包含在组件中
+    var optList = select.querySelector('.optList');
+
+    // 我们改变列表的class去显示/隐藏它
+    optList.classList.toggle('hidden');
+}
+
+// 每当我们要高亮一个选项的时候，会调用该函数
+// 它需要两个参数:
+// select : 带有'select'类的DOM节点，包含了需要高亮强调的选项
+// option : 需要高亮强调的带有'option'类的DOM节点
+function highlightOption(select, option) {
+
+    // 为我们的自定义select元素获取所有有效选项的列表
+    var optionList = select.querySelectorAll('.option');
+
+    // 我们移除所有选项的高亮强调
+    optionList.forEach(function(other) {
+        other.classList.remove('highlight');
+    });
+
+    // 我们高亮强调正确的选项
+    option.classList.add('highlight');
+};
+</script>
+
+</html>

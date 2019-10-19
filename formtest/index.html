@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>formtest</title>
-	 <style>
-      input:invalid {
+    <title>formtest</title>
+    <style>
+        input:invalid {
         border: 2px dashed red;
       }
       input:valid {
@@ -11,121 +12,160 @@
       }
     </style>
 </head>
+
 <body>
-<select id="simple" name="simple">
-  <option>Banana</option>
-  <option>Cherry</option>
-  <option>Lemon</option>
-</select>
-
-<select id="groups" name="groups">
-  <optgroup label="fruits">
-    <option>Banana</option>
-    <option selected>Cherry</option>
-    <option>Lemon</option>
-  </optgroup>
-  <optgroup label="vegetables">
-    <option>Carrot</option>
-    <option>Eggplant</option>
-    <option>Potato</option>
-  </optgroup>
-</select>
-
-<select multiple id="multi" name="multi">
-  <option>Banana</option>
-  <option>Cherry</option>
-  <option>Lemon</option>
-</select>
-
-<div>
-  <label for="username">Name: <abbr title="required">*</abbr></label>
-  <input id="username" type="text" name="username">
-</div>
-
-<div>
-  <label for="username">
-    <span>Name:</span>
-    <input id="username" type="text" name="username">
-    <abbr title="required">*</abbr>
-  </label>
-</div>
-
-
-<section>
-    <h2>Contact information</h2>
-    <fieldset>
-      <legend>Title</legend>
-      <ul>
-          <li>
-            <label for="title_1">
-              <input type="radio" id="title_1" name="title" value="M." >
-              Mister
+    <select id="simple" name="simple">
+        <option>Banana</option>
+        <option>Cherry</option>
+        <option>Lemon</option>
+    </select>
+    <select id="groups" name="groups">
+        <optgroup label="fruits">
+            <option>Banana</option>
+            <option selected>Cherry</option>
+            <option>Lemon</option>
+        </optgroup>
+        <optgroup label="vegetables">
+            <option>Carrot</option>
+            <option>Eggplant</option>
+            <option>Potato</option>
+        </optgroup>
+    </select>
+    <select multiple id="multi" name="multi">
+        <option>Banana</option>
+        <option>Cherry</option>
+        <option>Lemon</option>
+    </select>
+    <div>
+        <label for="username">Name: <abbr title="required">*</abbr></label>
+        <input id="username" type="text" name="username">
+    </div>
+    <div>
+        <label for="username">
+            <span>Name:</span>
+            <input id="username" type="text" name="username">
+            <abbr title="required">*</abbr>
+        </label>
+    </div>
+    <section>
+        <h2>Contact information</h2>
+        <fieldset>
+            <legend>Title</legend>
+            <ul>
+                <li>
+                    <label for="title_1">
+                        <input type="radio" id="title_1" name="title" value="M.">
+                        Mister
+                    </label>
+                </li>
+                <li>
+                    <label for="title_2">
+                        <input type="radio" id="title_2" name="title" value="Ms.">
+                        Miss
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
+        <p>
+            <label for="name">
+                <span>Name: </span>
+                <strong><abbr title="required">*</abbr></strong>
             </label>
-          </li>
-          <li>
-            <label for="title_2">
-              <input type="radio" id="title_2" name="title" value="Ms.">
-              Miss
+            <input type="text" id="name" name="username">
+        </p>
+        <p>
+            <label for="mail">
+                <span>E-mail: </span>
+                <strong><abbr title="required">*</abbr></strong>
             </label>
-          </li>
-      </ul>
-    </fieldset>
-    <p>
-      <label for="name">
-        <span>Name: </span>
-        <strong><abbr title="required">*</abbr></strong>
-      </label>
-      <input type="text" id="name" name="username">
-    </p>
-    <p>
-      <label for="mail">
-        <span>E-mail: </span>
-        <strong><abbr title="required">*</abbr></strong>
-      </label>
-      <input type="email" id="mail" name="usermail">
-    </p>
-    <p>
-      <label for="pwd">
-        <span>Password: </span>
-        <strong><abbr title="required">*</abbr></strong>
-      </label>
-      <input type="password" id="pwd" name="password">
-    </p>
-</section>
-
-<section>
-    <h2>Payment information</h2>
-    <p>
-      <label for="card">
-        <span>Card type:</span>
-      </label>
-      <select id="card" name="usercard">
-        <option value="visa">Visa</option>
-        <option value="mc">Mastercard</option>
-        <option value="amex">American Express</option>
-      </select>
-    </p>
-    <p>
-      <label for="number">
-        <span>Card number:</span>
-        <strong><abbr title="required">*</abbr></strong>
-      </label>
-        <input type="number" id="number" name="cardnumber">
-    </p>
-    <p>
-      <label for="date">
-        <span>Expiration date:</span>
-        <strong><abbr title="required">*</abbr></strong>
-        <em>formatted as mm/yy</em>
-      </label>
-      <input type="date" id="date" name="expiration">
-    </p>
-</section>
-
- <form>
-      <label for="choose">Would you prefer a banana or a cherry?</label>
-      <input type="text" id="choose" name="i_like" placeholder=" banana or cherry" value="" required pattern="banana|cherry">
-      <button>Submit</button>
+            <input type="email" id="mail" name="usermail">
+        </p>
+        <p>
+            <label for="pwd">
+                <span>Password: </span>
+                <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <input type="password" id="pwd" name="password">
+        </p>
+    </section>
+    <section>
+        <h2>Payment information</h2>
+        <p>
+            <label for="card">
+                <span>Card type:</span>
+            </label>
+            <select id="card" name="usercard">
+                <option value="visa">Visa</option>
+                <option value="mc">Mastercard</option>
+                <option value="amex">American Express</option>
+            </select>
+        </p>
+        <p>
+            <label for="number">
+                <span>Card number:</span>
+                <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <input type="number" id="number" name="cardnumber">
+        </p>
+        <p>
+            <label for="date">
+                <span>Expiration date:</span>
+                <strong><abbr title="required">*</abbr></strong>
+                <em>formatted as mm/yy</em>
+            </label>
+            <input type="date" id="date" name="expiration">
+        </p>
+    </section>
+    <form>
+        <div>
+            <label for="choose">Would you prefer a banana or a cherry?</label>
+            <input id="choose" name="i_like" required minlength="6" maxlength="6">
+        </div>
+        <div>
+            <label for="number">How many would you like?</label>
+            <input type="number" id="number" name="amount" value="1" min="1" max="10">
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+    <form>
+        <p>
+            <fieldset>
+                <legend>Title<abbr title="This field is mandatory">*</abbr></legend>
+                <input type="radio" required name="title" id="r1" value="Mr"><label for="r1">Mr.</label>
+                <input type="radio" required name="title" id="r2" value="Ms"><label for="r2">Ms.</label>
+            </fieldset>
+        </p>
+        <p>
+            <label for="n1">How old are you?</label>
+            <!-- 这里的pattern属性可以用作不支持number类input浏览器的备用方法
+         请注意当与数字输入框一起使用时，支持pattern属性的浏览器会使它沉默失效。
+         它仅仅是在这里用作备用 -->
+            <input type="number" min="12" max="120" step="1" id="n1" name="age" pattern="\d+">
+        </p>
+        <p>
+            <label for="t2">What's your e-mail?</label>
+            <input type="email" id="t2" name="email">
+        </p>
+        <p>
+            <label for="t3">Leave a short message</label>
+            <textarea id="t3" name="msg" maxlength="140" rows="5"></textarea>
+        </p>
+        <p>
+            <button>Submit</button>
+        </p>
+    </form>
+    <form novalidate>
+        <p>
+            <label for="mail">
+                <span>Please enter an email address:</span>
+                <input type="email" id="mail" name="mail">
+                <span class="error" aria-live="polite"></span>
+            </label>
+        </p>
+        <button>Submit</button>
     </form>
 </body>
+
 </html>
