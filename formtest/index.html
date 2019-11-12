@@ -5,11 +5,12 @@
     <title>formtest</title>
     <style>
         input:invalid {
-        border: 2px dashed red;
-      }
-      input:valid {
-        border: 2px solid black;
-      }
+            border: 2px dashed red;
+        }
+        
+        input:valid {
+            border: 2px solid black;
+        }
     </style>
 </head>
 
@@ -43,7 +44,7 @@
     <div>
         <label for="username">
             <span>Name:</span>
-            <input id="username" type="text" name="username">
+            <input id="usernameid" type="text" name="username">
             <abbr title="required">*</abbr>
         </label>
     </div>
@@ -123,7 +124,7 @@
         </div>
         <div>
             <label for="number">How many would you like?</label>
-            <input type="number" id="number" name="amount" value="1" min="1" max="10">
+            <input type="number" id="numberid" name="amount" value="1" min="1" max="10">
         </div>
         <div>
             <button>Submit</button>
@@ -160,7 +161,7 @@
         <p>
             <label for="mail">
                 <span>Please enter an email address:</span>
-                <input type="email" id="mail" name="mail">
+                <input type="email" id="mailid" name="mail">
                 <span class="error" aria-live="polite"></span>
             </label>
         </p>
