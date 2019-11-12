@@ -102,7 +102,7 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/sam/html"
+		"/F/html"
 	],
 	"file_history":
 	[
@@ -201,7 +201,7 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "htm.sublime-project",
+	"project": "html.sublime-project",
 	"replace":
 	{
 		"height": 71.0
