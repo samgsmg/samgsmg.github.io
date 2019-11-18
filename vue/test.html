@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{getData()}}
+    </div>
+
+    <div id="msg">
+        <span>Message:{{msg}}</span>
+        <span v-once>这个将不会改变:{{msg}}</span>
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <span v-html="rawHtml">Using v-html directive:</span>
+        <div :class="color" @click="changeColor">test</div>
+        <p>{{number +1 }}</p>
+        <p>{{ ok == true ? 'YES' : 'NO'}}</p>
+    </div>
+    <script type="text/javascript">
+        var dataobj = {
+            b: 2
+        };
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                b: 1
+            },
+            created: function () {
+                this.b = "test";
+                console.log('call created:', this.b);
+            },
+            mounted: function () {
+                console.log("call mounted");
+            },
+            updated: function () {
+                console.log("call updated:");
+            },
+            methods: {
+                getData: function () {
+                    return this.b;
+                }
+            },
+
+        });
+        vm.$watch('b', function (newValue, oldValue) {
+            console.log(newValue, oldValue);
+        });
+        vm.$data.b = dataobj.b;
+
+        var msg = new Vue({
+            el: '#msg',
+            data: {
+                msg: "hello html template",
+                rawHtml: "<span style='color:red'>this is should be red</span>",
+                color:"blue",
+                number:10,
+                ok:1
+
+            },
+            methods: {
+                changeColor: function(){
+                    this.color=='red'?this.color='blue':this.color='red';
+                }
+            },
+        })
+        msg.$data.msg = "test";
+    </script>
+
+    <style type="text/css">
+    .red{color:red;font-size:50px;}
+    .blue{color:blue;font-size: 100px;}
+    </style>
+</body>
+
+</html>
