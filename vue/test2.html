@@ -18,7 +18,7 @@
             <input v-model="question">
         </p>
         <p>{{ answer }}</p>
-        <img :src="image"/>
+        <img :src="image" />
     </div>
     <script>
         var watchExampleVM = new Vue({
@@ -26,7 +26,7 @@
             data: {
                 question: '',
                 answer: 'I cannot give you an answer until you ask a question!',
-                image:''
+                image: ''
             },
             watch: {
                 // 如果 `question` 发生改变，这个函数就会运行
@@ -47,7 +47,7 @@
                 getAnswer: function () {
                     if (this.question.indexOf('?') === -1) {
                         this.answer = 'Questions usually contain a question mark. ;-)';
-                        this.image='';
+                        this.image = '';
                         return
                     }
                     this.answer = 'Thinking...'
@@ -55,11 +55,11 @@
                     axios.get('https://yesno.wtf/api')
                         .then(function (response) {
                             vm.answer = _.capitalize(response.data.answer);
-                            vm.image=response.data.image;
+                            vm.image = response.data.image;
                         })
                         .catch(function (error) {
                             vm.answer = 'Error! Could not reach the API. ' + error
-                            vm.image=resonse.data.image;
+                            vm.image = resonse.data.image;
                         })
                 }
             }
