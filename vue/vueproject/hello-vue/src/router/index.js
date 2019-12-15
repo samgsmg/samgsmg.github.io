@@ -23,6 +23,11 @@ const routes = [
     path: "/githubcommits",
     name: "githubcommits",
     component: () => import("../views/GitHubCommits.vue")
+  },
+  {
+    path: "/griddemo",
+    name: "girddemo",
+    component: () => import("../views/GridDemo.vue")
   }
 ];
 
