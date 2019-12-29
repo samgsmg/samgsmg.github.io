@@ -11,8 +11,9 @@
 </template>
 
 <script>
-import GridView from "@/views/GridView.vue";
+import GridView from "@/components/GridView.vue";
 export default {
+  name: "griddemo",
   data: function() {
     return {
       searchQuery: "",

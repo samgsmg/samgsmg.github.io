@@ -28,6 +28,11 @@ const routes = [
     path: "/griddemo",
     name: "girddemo",
     component: () => import("../views/GridDemo.vue")
+  },
+  {
+    path: "/treedemo",
+    name: "treedemo",
+    component: () => import("../views/TreeDemo.vue")
   }
 ];
 
