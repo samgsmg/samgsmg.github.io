@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSS test</title>
+    <style type="text/css">
+    .main {
+        color: rebeccapurple;
+        border: 2px solid #ccc;
+        padding: 1em;
+    }
+
+    .special {
+        color: black;
+        font-weight: bold;
+    }
+
+
+
+    .my-class-1 a {
+        color: inherit;
+    }
+
+    .my-class-2 a {
+        color: initial;
+    }
+
+    .my-class-3 a {
+        color: unset;
+    }
+
+    blockquote {
+        background-color: red;
+        border: 2px solid green;
+    }
+
+    .fix-this {
+        all: unset;
+    }
+
+    h2 {
+        font-size: 2em;
+        color: #000;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .small {
+        font-size: 1em;
+    }
+
+    .bright {
+        color: rebeccapurple;
+    }
+
+    /* specificity: 0101 */
+    #outer a {
+        background-color: red;
+    }
+
+    /* specificity: 0201 */
+    #outer #inner a {
+        background-color: blue;
+    }
+
+    /* specificity: 0104 */
+    #outer div ul li a {
+        color: yellow;
+    }
+
+    /* specificity: 0113 */
+    #outer div ul .nav a {
+        color: white;
+    }
+
+    /* specificity: 0024 */
+    div div li:nth-child(2) a:hover {
+        border: 10px solid black;
+    }
+
+    /* specificity: 0023 */
+    div li:nth-child(2) a:hover {
+        border: 10px dashed black;
+    }
+
+    /* specificity: 0033 */
+    div div .nav:nth-child(2) a:hover {
+        border: 10px double black;
+    }
+
+    a {
+        display: inline-block;
+        line-height: 40px;
+        font-size: 20px;
+        text-decoration: none;
+        text-align: center;
+        width: 200px;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    .notebox {
+        border: 4px solid #666;
+        padding: .5em;
+    }
+
+    .notebox.warning {
+        border: 4px solid orange;
+        font-weight: bold;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .notebox.danger {
+        border: 4px solid red;
+        font-weight: bold;
+    }
+
+    li[class] {
+        font-size: 200%;
+    }
+
+    li[class="a"] {
+        background-color: yellow;
+    }
+
+    li[class~="a"] {
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <ul class="main">
+        <li>Item One</li>
+        <li>Item Two
+            <ul>
+                <li>2.1</li>
+                <li>2.2</li>
+            </ul>
+        </li>
+        <li>Item Three
+            <ul class="special">
+                <li>3.1
+                    <ul>
+                        <li>3.1.1</li>
+                        <li>3.1.2</li>
+                    </ul>
+                </li>
+                <li>3.2</li>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+        <li>Default <a href="#">link</a> color</li>
+        <li class="my-class-1">Inherit the <a href="#">link</a> color</li>
+        <li class="my-class-2">Reset the <a href="#">link</a> color</li>
+        <li class="my-class-3">Unset the <a href="#">link</a> color</li>
+    </ul>
+    <blockquote>
+        <p>This blockquote is styled</p>
+    </blockquote>
+    <blockquote class="fix-this">
+        <p>This blockquote is not styled</p>
+    </blockquote>
+    <h2>Heading with no class</h2>
+    <h2 class="small">Heading with class of small</h2>
+    <h2 class="bright">Heading with class of bright</h2>
+    <div id="outer" class="container">
+        <div id="inner" class="container">
+            <ul>
+                <li class="nav"><a href="#">One</a></li>
+                <li class="nav"><a href="#">Two</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="notebox">
+        This is an informational note.
+    </div>
+    <div class="notebox warning">
+        This note shows a warning.
+    </div>
+    <div class="notebox danger">
+        This note shows danger!
+    </div>
+    <h1>Attribute presence and value selectors</h1>
+    <ul>
+        <li>Item 1</li>
+        <li class="a">Item 2</li>
+        <li class="a b">Item 3</li>
+        <li class="ab">Item 4</li>
+    </ul>
+</body>
+
+</html>

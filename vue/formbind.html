@@ -17,7 +17,6 @@
             <textarea v-model="message2" placeholder="add multiple lines"></textarea>
             <p style="white-space: pre-line;">{{message2}}</p>
             <br />
-
             <div style="margin-top: 20px;">
                 <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
                 <label for="jack">Jack</label>
@@ -104,6 +103,7 @@
                         checkval: this.checkedNames
                     };
                     console.log(postObj)
+
                 }
             }
         })
