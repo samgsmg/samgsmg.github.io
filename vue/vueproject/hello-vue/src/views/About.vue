@@ -2,6 +2,7 @@
   <div class="about">
     <h1>{{ msg }}</h1>
     <button-counter></button-counter>
+    <button-counter></button-counter>
   </div>
 </template>
 
