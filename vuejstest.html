@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
 
   <body>
@@ -18,23 +20,22 @@
       var app = new Vue({
         el: "#app",
         data: {
-          message: "Hello Vue"
-        }
-      })
+          message: "Hello Vue",
+        },
+      });
     </script>
     <div id="app-2">
       <span v-bind:title="message">
         鼠标悬停几秒钟查看此处动态绑定的提示信息！
       </span>
-
     </div>
     <script>
       var app2 = new Vue({
-        el: '#app-2',
+        el: "#app-2",
         data: {
-          message: '页面加载于 ' + new Date().toLocaleString()
-        }
-      })
+          message: "页面加载于 " + new Date().toLocaleString(),
+        },
+      });
     </script>
     <div id="app-3">
       <p v-if="seen">可以看到</p>
@@ -43,9 +44,9 @@
       var app3 = new Vue({
         el: "#app-3",
         data: {
-          seen: true
-        }
-      })
+          seen: true,
+        },
+      });
     </script>
     <div id="app-4">
       <ol>
@@ -60,15 +61,17 @@
         data: {
           todos: [
             {
-              text: "学习javascript"
-            }, {
-              text: "学习vue"
-            }, {
-              text: "学习整个项目"
-            }
-          ]
-        }
-      })
+              text: "学习javascript",
+            },
+            {
+              text: "学习vue",
+            },
+            {
+              text: "学习整个项目",
+            },
+          ],
+        },
+      });
     </script>
     <div id="app-5">
       <p>{{message}}</p>
@@ -78,88 +81,85 @@
       var app5 = new Vue({
         el: "#app-5 ",
         data: {
-          message: "Hello World "
+          message: "Hello World ",
         },
         methods: {
           reverseMessage: function () {
-            this.message = this
-              .message
-              .split('')
-              .reverse()
-              .join('')
-          }
-        }
-      })
+            this.message = this.message.split("").reverse().join("");
+          },
+        },
+      });
     </script>
     <div id="app-6">
       <p>{{message}}</p>
-      <input v-model="message">
+      <input v-model="message" />
     </div>
     <script>
       var app6 = new Vue({
         el: "#app-6",
         data: {
-          message: "Hello Vue! "
-        }
-      })
+          message: "Hello Vue! ",
+        },
+      });
     </script>
     <div id="app-7">
       <ol>
-        <todo-item v-for="item in groceryList " v-bind:todo='item' v-bind:key='item.id'></todo-item>
+        <todo-item
+          v-for="item in groceryList "
+          v-bind:todo="item"
+          v-bind:key="item.id"
+        ></todo-item>
       </ol>
     </div>
     <script>
-      Vue.component('todo-item', {
-        props: ['todo'],
-        template: '<li :id=todo.id>{{todo.text}}</li>'
-
-      })
+      Vue.component("todo-item", {
+        props: ["todo"],
+        template: "<li :id=todo.id>{{todo.text}}</li>",
+      });
       var app7 = new Vue({
         el: "#app-7",
         data: {
           groceryList: [
             {
               id: 0,
-              text: "蔬菜 "
-            }, {
+              text: "蔬菜 ",
+            },
+            {
               id: 1,
-              text: "水果 "
-            }
-          ]
-        }
-      })
+              text: "水果 ",
+            },
+          ],
+        },
+      });
     </script>
 
     <div id="app-8">
       <p>
-        原始信息:"{{message}}"</p>
+        原始信息:"{{message}}"
+      </p>
       <p>计算后信息:"{{reverseMessage}}</p>
     </div>
     <script>
       var app8 = new Vue({
         el: "#app-8",
         data: {
-          message: "hello"
+          message: "hello",
         },
         computed: {
           reverseMessage: function () {
-            return this
-              .message
-              .split('')
-              .reverse()
-              .join('')
-          }
-        }
-      })
+            return this.message.split("").reverse().join("");
+          },
+        },
+      });
     </script>
     <div id="app-9">{{fullName}}</div>
     <script>
       var app9 = new Vue({
         el: "#app-9",
         data: {
-          firstName: 'Foo',
-          lastName: 'Bar',
-          fullName: "Foo Bar"
+          firstName: "Foo",
+          lastName: "Bar",
+          fullName: "Foo Bar",
         },
         watch: {
           firstName: function (val) {
@@ -167,9 +167,9 @@
           },
           lastName: function (val) {
             this.fullName = this.firstName + " " + val;
-          }
-        }
-      })
+          },
+        },
+      });
     </script>
     <div id="app-10">
       <blog-post title="My journey with Vue"></blog-post>
@@ -177,14 +177,18 @@
       <blog-post title="Why Vue is so fun"></blog-post>
     </div>
     <div id="app-11">
-      <blog-post v-for="post in posts" v-bind:key='post.id' v-bind:title='post.title'/>
+      <blog-post
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:title="post.title"
+      />
     </div>
     <script>
-      Vue.component('blog-post', {
-        props: ['title'],
-        template: '<h3>{{title}}</h3>'
-      })
-      var blogpost = new Vue({el: "#app-10"})
+      Vue.component("blog-post", {
+        props: ["title"],
+        template: "<h3>{{title}}</h3>",
+      });
+      var blogpost = new Vue({ el: "#app-10" });
 
       app11 = new Vue({
         el: "#app-11",
@@ -192,48 +196,65 @@
           posts: [
             {
               id: 1,
-              title: '2nd edition My journey with Vue'
-            }, {
+              title: "2nd edition My journey with Vue",
+            },
+            {
               id: 2,
-              title: '2nd edition Blogging with Vue'
-            }, {
+              title: "2nd edition Blogging with Vue",
+            },
+            {
               id: 3,
-              title: '2nd edition Why Vue is so fun'
-            }
-          ]
-        }
-      })
+              title: "2nd edition Why Vue is so fun",
+            },
+          ],
+        },
+      });
     </script>
     <div id="dynamic-component-demo" class="demo">
-      <button v-for="tab in tabs" v-bind:key="tab" v-bind:class="['dynamic-component-demo-tab-button', { 'dynamic-component-demo-active': currentTab === tab }]" v-on:click="currentTab = tab">{{ tab }}</button>
+      <button
+        v-for="tab in tabs"
+        v-bind:key="tab"
+        v-bind:class="['dynamic-component-demo-tab-button', { 'dynamic-component-demo-active': currentTab === tab }]"
+        v-on:click="currentTab = tab"
+      >
+        {{ tab }}
+      </button>
       <keep-alive>
-        <component v-bind:is="currentTabComponent" class="dynamic-component-demo-tab"></component>
+        <component
+          v-bind:is="currentTabComponent"
+          class="dynamic-component-demo-tab"
+        ></component>
       </keep-alive>
-
     </div>
     <script>
-      Vue.component('tab-posts', {
+      Vue.component("tab-posts", {
         data: function () {
           return {
             posts: [
               {
                 id: 1,
-                title: 'Cat Ipsum',
-                content: '<p>Dont wait for the storm to pass, dance in the rain kick up litter decide to want nothing to do with my owner today demand to be let outside at once, and expect owner to wait for me as i think about it cat cat moo moo lick ears lick paws so make meme, make cute face but lick the other cats. Kitty poochy chase imaginary bugs, but stand in front of the computer screen. Sweet beast cat dog hate mouse eat string barf pillow no baths hate everything stare at guinea pigs. My left donut is missing, as is my right loved it, hated it, loved it, hated it scoot butt on the rug cat not kitten around</p>'
-              }, {
+                title: "Cat Ipsum",
+                content:
+                  "<p>Dont wait for the storm to pass, dance in the rain kick up litter decide to want nothing to do with my owner today demand to be let outside at once, and expect owner to wait for me as i think about it cat cat moo moo lick ears lick paws so make meme, make cute face but lick the other cats. Kitty poochy chase imaginary bugs, but stand in front of the computer screen. Sweet beast cat dog hate mouse eat string barf pillow no baths hate everything stare at guinea pigs. My left donut is missing, as is my right loved it, hated it, loved it, hated it scoot butt on the rug cat not kitten around</p>",
+              },
+              {
                 id: 2,
-                title: 'Hipster Ipsum',
-                content: '<p>Bushwick blue bottle scenester helvetica ugh, meh four loko. Put a bird on it lumbersexual franzen shabby chic, street art knausgaard trust fund shaman scenester live-edge mixtape taxidermy viral yuccie succulents. Keytar poke bicycle rights, crucifix street art neutra air plant PBR&B hoodie plaid venmo. Tilde swag art party fanny pack vinyl letterpress venmo jean shorts offal mumblecore. Vice blog gentrify mlkshk tattooed occupy snackwave, hoodie craft beer next level migas 8-bit chartreuse. Trust fund food truck drinking vinegar gochujang.</p>'
-              }, {
+                title: "Hipster Ipsum",
+                content:
+                  "<p>Bushwick blue bottle scenester helvetica ugh, meh four loko. Put a bird on it lumbersexual franzen shabby chic, street art knausgaard trust fund shaman scenester live-edge mixtape taxidermy viral yuccie succulents. Keytar poke bicycle rights, crucifix street art neutra air plant PBR&B hoodie plaid venmo. Tilde swag art party fanny pack vinyl letterpress venmo jean shorts offal mumblecore. Vice blog gentrify mlkshk tattooed occupy snackwave, hoodie craft beer next level migas 8-bit chartreuse. Trust fund food truck drinking vinegar gochujang.</p>",
+              },
+              {
                 id: 3,
-                title: 'Cupcake Ipsum',
-                content: '<p>Icing dessert soufflé lollipop chocolate bar sweet tart cake chupa chups. Soufflé marzipan jelly beans croissant toffee marzipan cupcake icing fruitcake. Muffin cake pudding soufflé wafer jelly bear claw sesame snaps marshmallow. Marzipan soufflé croissant lemon drops gingerbread sugar plum lemon drops apple pie gummies. Sweet roll donut oat cake toffee cake. Liquorice candy macaroon toffee cookie marzipan.</p>'
-              }
+                title: "Cupcake Ipsum",
+                content:
+                  "<p>Icing dessert soufflé lollipop chocolate bar sweet tart cake chupa chups. Soufflé marzipan jelly beans croissant toffee marzipan cupcake icing fruitcake. Muffin cake pudding soufflé wafer jelly bear claw sesame snaps marshmallow. Marzipan soufflé croissant lemon drops gingerbread sugar plum lemon drops apple pie gummies. Sweet roll donut oat cake toffee cake. Liquorice candy macaroon toffee cookie marzipan.</p>",
+              },
             ],
-            selectedPost: null
-          }
+            selectedPost: null,
+          };
         },
-        template: '\
+        template:
+          '\
     <div class="dynamic-component-demo-posts-tab">\
       <ul class="dynamic-component-demo-posts-sidebar">\
         <li\
@@ -258,23 +279,23 @@
         </strong>\
       </div>\
     </div>\
-  '
-      })
-      Vue.component('tab-archive', {template: '<div>Archive component</div>'})
+  ',
+      });
+      Vue.component("tab-archive", {
+        template: "<div>Archive component</div>",
+      });
       new Vue({
-        el: '#dynamic-component-demo',
+        el: "#dynamic-component-demo",
         data: {
-          currentTab: 'Posts',
-          tabs: ['Posts', 'Archive']
+          currentTab: "Posts",
+          tabs: ["Posts", "Archive"],
         },
         computed: {
           currentTabComponent: function () {
-            return 'tab-' + this
-              .currentTab
-              .toLowerCase()
-          }
-        }
-      })
+            return "tab-" + this.currentTab.toLowerCase();
+          },
+        },
+      });
     </script>
     <style>
       .dynamic-component-demo-tab-button {
@@ -342,27 +363,31 @@
       <async-example></async-example>
     </div>
     <script>
-      Vue.component('async-example', function (resolve, reject) {
+      Vue.component("async-example", function (resolve, reject) {
         setTimeout(function () {
           // 向 `resolve` 回调传递组件定义
-          resolve({template: '<div>I am async!</div>'})
-        }, 1000)
-      })
-      var asyncexample = new Vue({el: "#app-12"})
+          resolve({ template: "<div>I am async!</div>" });
+        }, 1000);
+      });
+      var asyncexample = new Vue({ el: "#app-12" });
     </script>
     <div id="example-2">
       <button @click="show = !show">Toggle show</button>
       <transition name="bounce">
-        <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+        <p v-if="show">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+          facilisis enim libero, at lacinia diam fermentum id. Pellentesque
+          habitant morbi tristique senectus et netus.
+        </p>
       </transition>
     </div>
     <script>
       new Vue({
-        el: '#example-2',
+        el: "#example-2",
         data: {
-          show: true
-        }
-      })
+          show: true,
+        },
+      });
     </script>
     <style>
       .bounce-enter-active {
@@ -389,19 +414,21 @@
       <button @click="show = !show">
         Toggle render
       </button>
-      <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+      <transition
+        name="custom-classes-transition"
+        enter-active-class="animated tada"
+        leave-active-class="animated bounceOutRight"
+      >
         <p v-if="show">hello</p>
       </transition>
     </div>
     <script>
       new Vue({
-        el: '#example-3',
+        el: "#example-3",
         data: {
-          show: true
-        }
-      })
+          show: true,
+        },
+      });
     </script>
-
   </body>
-
 </html>
