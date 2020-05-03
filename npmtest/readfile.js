@@ -12,4 +12,12 @@ fs.readFile('input.txt', function (err, data) {
     console.log(data.toString());
 });
 
+
+fs.readFile('content.txt', 'utf-8', function (err, data) {
+    if (err) {
+        console.error(err.stack);
+    } else {
+        console.log(data);
+    }
+})
 console.log("程序执行结束") 
