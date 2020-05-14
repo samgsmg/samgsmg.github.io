@@ -1,29 +1,41 @@
 # vuetest
 
 ## Project setup
-```
-npm install
+
+```bash
+yarn install
 ```
 
 ### Compiles and hot-reloads for development
-```
-npm run serve
+
+```bash
+yarn serve
 ```
 
 ### Compiles and minifies for production
-```
-npm run build
+
+```bash
+yarn build
 ```
 
 ### Run your unit tests
+
+```bash
+yarn test:unit
 ```
-npm run test:unit
+
+### Run your end-to-end tests
+
+```base
+yarn test:e2e
 ```
 
 ### Lints and fixes files
-```
-npm run lint
+
+```bash
+yarn lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
