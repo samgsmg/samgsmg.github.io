@@ -10,9 +10,9 @@ module.exports = {
   devServer: {
     ...(process.env.API_BASE_URL
       ? // Proxy API endpoints to the production base URL.
-        { proxy: { '/api': { target: process.env.API_BASE_URL } } }
+      { proxy: { '/api': { target: process.env.API_BASE_URL } } }
       : // Proxy API endpoints a local mock API.
-        { before: require('./tests/mock-api') }),
+      { before: require('./tests/mock-api') }),
   },
   chainWebpack: (config) => {
     config.set('name', appConfig.title)
@@ -20,8 +20,8 @@ module.exports = {
     config.resolve.extensions.delete('.vue')
     config.performance.hints(
       process.env.NODE_ENV === 'production' &&
-        !process.env.VUE_APP_TEST &&
-        'warning'
+      !process.env.VUE_APP_TEST &&
+      'warning'
     )
   },
 }
