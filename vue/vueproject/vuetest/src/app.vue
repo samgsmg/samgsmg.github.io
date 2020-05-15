@@ -14,35 +14,74 @@ export default {
 
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <RouterView :key="$route.fullPath" />
   </div>
 </template>
 
+<!-- This should generally be the only global CSS in the app. -->
 <style lang="scss">
+// Allow element/type selectors, because this is global CSS.
+// stylelint-disable selector-max-type, selector-class-pattern
+
+// Normalize default styles across browsers,
+// https://necolas.github.io/normalize.css/
+@import '~normalize.css/normalize.css';
+// Style loading bar between pages.
+// https://github.com/rstacruz/nprogress
+@import '~nprogress/nprogress.css';
+
+// Design variables and utilities from src/design.
 @import '@design';
-#app {
-  @extend %typography-small;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: #2c3e50;
-  text-align: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-#nav {
-  padding: 30px;
+body {
+  background: $color-body-bg;
+}
+#app {
+  @extend %typography-small;
+  text-align: center;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+// ===
+// Base element styles
+// ===
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+a,
+a:visited {
+  color: $color-link-text;
+}
+
+h1 {
+  @extend %typography-xxlarge;
+}
+
+h2 {
+  @extend %typography-xlarge;
+}
+
+h3 {
+  @extend %typography-large;
+}
+
+h4 {
+  @extend %typography-medium;
+}
+
+h5,
+h6 {
+  @extend %typography-small;
+}
+
+// ===
+// Vendor
+// ===
+
+#nprogress .bar {
+  background: $color-link-text;
 }
 </style>
