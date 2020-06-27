@@ -2,7 +2,8 @@ const _ = require('lodash')
 // Use a random port number for the mock API by default,
 // to support multiple instances of Jest running
 // simultaneously, like during pre-commit lint.
-process.env.MOCK_API_PORT = process.env.MOCK_API_PORT || _.random(9000, 9999)
+var api_port = process.env.MOCK_API_PORT
+api_port = api_port || _.random(9000, 9999)
 
 module.exports = {
   setupFiles: ['<rootDir>/tests/unit/setup'],

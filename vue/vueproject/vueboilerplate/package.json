@@ -1,0 +1,70 @@
+{
+  "name": "vueboilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build --modern",
+    "build:ci": "yarn build --report",
+    "lint:eslint": "eslint --fix",
+    "lint:stylelint": "stylelint --fix",
+    "lint:markdownlint": "markdownlint",
+    "lint:prettier": "prettier --write --loglevel warn",
+    "lint:all:eslint": "yarn lint:eslint --ext .js,.vue .",
+    "lint:all:stylelint": "yarn lint:stylelint \"src/**/*.{vue,scss}\"",
+    "lint:all:prettier": "yarn lint:prettier \"**/*.{js,json,css,scss,vue,html,md}\"",
+    "lint": "run-s lint:all:*",
+    "test:unit": "cross-env VUE_APP_TEST=unit vue-cli-service test:unit",
+    "test:unit:file": "yarn test:unit --bail --findRelatedTests",
+    "test:unit:watch": "yarn test:unit --watch --notify --notifyMode change",
+    "test:unit:ci": "yarn test:unit --coverage --ci",
+    "new": "cross-env HYGEN_TMPLS=generators hygen new"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "core-js": "^3.6.5",
+    "lodash": "^4.17.15",
+    "vue": "^2.6.11",
+    "vue-meta": "^2.4.0",
+    "vue-router": "^3.3.4",
+    "vuex": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-unit-jest": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/test-utils": "^1.0.3",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.3.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "hygen": "^5.0.3",
+    "lint-staged": "^10.2.11",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.26.9",
+    "sass-loader": "^8.0.2",
+    "stylelint": "^13.6.1",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^2.0.4",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.18.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "engines": {
+    "node": ">=10.13.3",
+    "yarn": ">=1.0.0"
+  },
+  "resolutions": {
+    "@vue/cli-plugin-unit-jest/jest": "25.1.x",
+    "@vue/cli-plugin-unit-jest/babel-jest": "25.1.x"
+  }
+}

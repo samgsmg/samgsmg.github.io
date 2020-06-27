@@ -23,16 +23,16 @@ export default {
   name: "tree-item",
   data: function() {
     return {
-      isOpen: false
+      isOpen: false,
     };
   },
   props: {
-    item: Object
+    item: Object,
   },
   computed: {
     isFolder: function() {
       return this.item.children && this.item.children.length;
-    }
+    },
   },
   methods: {
     toggle: function() {
@@ -45,11 +45,11 @@ export default {
         this.$emit("make-folder", this.item);
         this.isOpen = true;
       }
-    }
+    },
   },
   components: {
-    TreeItem
-  }
+    TreeItem,
+  },
 };
 </script>
 <style scoped lang="scss">

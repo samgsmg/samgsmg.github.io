@@ -16,7 +16,6 @@ module.exports = {
   rules: {
     // Only allow debugger in development
     'no-debugger': process.env.PRE_COMMIT ? 'error' : 'off',
-    'no-unsafe-negation': 1,
     // Only allow `console.log` in development
     'no-console': process.env.PRE_COMMIT
       ? ['error', { allow: ['warn', 'error'] }]
@@ -69,13 +68,24 @@ module.exports = {
         parser: 'babel-eslint',
         sourceType: 'module',
       },
-      env: { jest: true },
+      env: {
+        jest: true,
+      },
       globals: {
         mount: false,
         shallowMount: false,
         shallowMountView: false,
         createComponentMocks: false,
         createModuleStore: false,
+      },
+    },
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
+      ],
+      env: {
+        jest: true,
       },
     },
   ],

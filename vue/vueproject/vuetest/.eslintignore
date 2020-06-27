@@ -1,2 +1,5 @@
 /dist/
 /tests/unit/coverage/
+!.eslintrc.js
+!.prettierrc.js
+!babel.config.js

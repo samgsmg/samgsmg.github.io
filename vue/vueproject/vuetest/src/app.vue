@@ -44,6 +44,7 @@ body {
 }
 #app {
   @extend %typography-small;
+
   text-align: center;
 }
 
