@@ -1,28 +1,68 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import appConfig from '@src/app.config'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
+  page: {
+    titleTemplate(title) {
+      title = typeof title === 'function' ? title(this.$store) : title
+      return title ? `${title}| ${appConfig.title}` : appConfig.title
+    },
   },
 }
 </script>
 
-<style>
+<template>
+  <div id="app">
+    <!--
+    Even when routes use the same component, treat them
+    as distinct and create the component again.
+    -->
+    <RouterView :key="$route.fullPath" />
+  </div>
+</template>
+
+<!-- This should generally be the only global CSS in the app. -->
+<style lang="scss">
+// Allow element/type selectors, because this is global CSS.
+// stylelint-disable selector-max-type, selector-class-pattern */
+@import '@design';
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: $color-body-bg;
+}
 #app {
-  margin-top: 60px;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  color: #2c3e50;
-  text-align: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @extend %typography-small;
+}
+
+// ===
+// Base element styles
+// ===
+
+a,
+a:visited {
+  color: $color-link-text;
+}
+
+h1 {
+  @extend %typography-xxlarge;
+}
+
+h2 {
+  @extend %typography-xlarge;
+}
+h3 {
+  @extend %typography-large;
+}
+h4 {
+  @extend %typography-medium;
+}
+h5,
+h6 {
+  @extend %typography-small;
 }
 </style>
