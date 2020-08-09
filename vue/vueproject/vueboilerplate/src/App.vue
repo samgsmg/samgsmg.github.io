@@ -1,7 +1,9 @@
 <script>
 import appConfig from '@src/app.config'
+import Layout from '@layouts/main.vue'
 
 export default {
+  components: { Layout },
   page: {
     titleTemplate(title) {
       title = typeof title === 'function' ? title(this.$store) : title
@@ -17,7 +19,9 @@ export default {
     Even when routes use the same component, treat them
     as distinct and create the component again.
     -->
-    <RouterView :key="$route.fullPath" />
+    <Layout>
+      <RouterView :key="$route.fullPath" />
+    </Layout>
   </div>
 </template>
 
